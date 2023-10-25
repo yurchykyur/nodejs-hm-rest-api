@@ -17,6 +17,15 @@ const login = async (req, res) => {
       message: "Authorization data is invalid",
     });
   }
+
+  if (!user.verify) {
+    throw HttpError(401, {
+      status: "error",
+      code: 401,
+      message: "Email is not verified",
+    });
+  }
+
   const comparePassword = await bcrypt.compare(password, user.password);
 
   if (!comparePassword) {

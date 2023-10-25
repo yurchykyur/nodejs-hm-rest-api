@@ -14,6 +14,14 @@ authRouter.post(
   ctrlAuth.register
 );
 
+authRouter.get("/verify/:verificationCode", ctrlAuth.verifyEmail);
+
+authRouter.get(
+  "/verify",
+  validateBody(userJoiSchemas.verifyEmaiSchema),
+  ctrlAuth.resendVerifyEmail
+);
+
 authRouter.post(
   "/login",
   validateBody(userJoiSchemas.loginSchema),

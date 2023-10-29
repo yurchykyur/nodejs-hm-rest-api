@@ -2,7 +2,7 @@ const { User } = require("../../models");
 const { ctrlWrapper, HttpError } = require("../../helpers");
 const bcrypt = require("bcryptjs");
 const { nanoid } = require("nanoid");
-const { sendEmail } = require("../../helpers");
+const { sendEmail } = require("../../services/email");
 const gravatar = require("gravatar");
 
 const { BASE_URL } = process.env;
